@@ -24,6 +24,10 @@ function App() {
     setContacts(sortedArray);
   }
 
+  function deleteContact (id) {
+    const updatedContacts = contacts.filter((contact) =>contact.id !== id);
+    setContacts(updatedContacts);
+  }
 
 
   return (
@@ -62,7 +66,7 @@ function App() {
             {contacts.map((oneContact) => {
               return  ( 
                 // eslint-disable-next-line react/jsx-key
-                <tr>
+                <tr key={oneContact.id}>
                   
                   <td>
                     <img 
@@ -89,7 +93,7 @@ function App() {
                   </td>
 
                   <td>
-                    <button  >
+                    <button onClick={() => deleteContact(oneContact.id)}   >
                      Delete
                     </button>
                   </td>
